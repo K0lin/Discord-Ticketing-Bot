@@ -1,5 +1,8 @@
 # Contributing Guidelines for the Discord Ticketing Bot
 
+
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
+
 Thank you for your interest in contributing to the Discord Ticketing Bot! We appreciate your help in making this bot even better for the community.
 
 This document provides guidelines on how you can contribute to the project. Please read these instructions carefully before getting started.
