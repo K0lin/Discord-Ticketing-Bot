@@ -101,7 +101,7 @@ Edit the `config.json` file with your specific settings:
   "TICKET_CLOSURE_TITLE": "",        // Title for the ticket closure embed
   "TICKET_CLOSURE_DESCRIPTION": "",  // Description for the ticket closure embed
   "TICKET_LOG_CHANNEL_ID": 0,        // Channel ID for ticket logs/transcripts
-  "TICKET_ENABLE_CLOSING_ROLE_ID": [] // Role IDs that can close tickets
+  "TICKET_ENABLE_CLOSING_ROLE_ID": [] // Role IDs that can close tickets (e.g., [1111, 2222])
 }
 ```
 
