@@ -8,7 +8,7 @@ A professional, feature-rich Discord bot for managing support tickets, built wit
 
 ## 📑 Table of Contents
 
-- [Overview](#overview)
+- [Overview](# 📋 Overview)
 - [Features](#features)
 - [Requirements](#requirements)
 - [Installation](#installation)
