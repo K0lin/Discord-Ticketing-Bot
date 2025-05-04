@@ -190,6 +190,6 @@ For permission requests or questions about licensing, please contact me into an 
 
 ## 📞 Support
 
-If you encounter any issues or have questions, please open an issue on GitHub or contact the maintainer.
+If you encounter any issues or have questions, please open an [issue](https://github.com/K0lin/Discord-Ticketing-Bot/issues) on GitHub or contact the maintainer.
 
 ![Made with Python](https://forthebadge.com/images/badges/made-with-python.svg)
