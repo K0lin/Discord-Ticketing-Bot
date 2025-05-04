@@ -48,4 +48,4 @@ IN NO EVENT SHALL K0lin BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONS
 
 This Agreement shall be governed by and construed in accordance with the laws of the jurisdiction in which the Software is being used. 
 
-For permission to use the Software in ways not covered by this license, please contact me into the github issue.
+For permission to use the Software in ways not covered by this license, please contact me into the github [issue](https://github.com/K0lin/Discord-Ticketing-Bot/issues).
