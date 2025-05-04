@@ -20,4 +20,4 @@ Copyright (c) 225 K0lin
 
 ## Additional Terms
 - Permission for any usage not explicitly granted above must be obtained in writing from the copyright holder.
-- For permission requests, please contact me into an github issue
+- For permission requests, please contact me into an github [issue](https://github.com/K0lin/Discord-Ticketing-Bot/issues).
