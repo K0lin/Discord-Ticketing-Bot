@@ -1,0 +1,5 @@
+# Discord API wrapper
+discord.py>=2.3.0
+
+# Timezone handling
+pytz>=2023.3

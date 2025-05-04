@@ -1,0 +1,29 @@
+{
+    "BOT_TOKEN": "",
+    "BOT_STATUS": "Checking discord activity",
+    "TIMEZONE": "UTC",
+    "REFRESH_CREATION_MESSAGE": true,
+    "MESSAGES_LOG": true,
+    "DOWNLOAD_LOG": true, 
+    "DATABASE_NAME": "ticket",
+    "TICKET_CREATION_CHANNEL_ID": ,
+    "TICKET_CREATION_EMBED_COLOR": "",
+    "TICKET_CREATION_AUTHOR": "Author",
+    "TICKET_CREATION_TITLE": "Title",
+    "TICKET_CREATION_DESCRIPTION": "Description",
+    "TICKET_CHOICE_BUTTON": [
+        {
+            "Support": "primary"
+        },
+        {
+            "Info": "success"
+        }
+    ],
+    "TICKET_CATEGORY_ID": ,
+    "TICKET_CLOSURE_EMBED_COLOR": "",
+    "TICKET_CLOSURE_AUTHOR": "Author",
+    "TICKET_CLOSURE_TITLE": "Title",
+    "TICKET_CLOSURE_DESCRIPTION": "Description",
+    "TICKET_LOG_CHANNEL_ID": ,
+    "TICKET_ENABLE_CLOSING_ROLE_ID": []
+}
