@@ -4,6 +4,7 @@ A professional, feature-rich Discord bot for managing support tickets, built wit
 
 ![Discord Ticket Bot](https://img.shields.io/badge/Discord-Ticket%20Bot-7289DA?style=for-the-badge&logo=discord&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
 
 ## 📑 Table of Contents
 
@@ -163,6 +164,7 @@ pip install -r requirements.txt
 
 ## 🤝 Contributing
 
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
@@ -171,6 +173,8 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 3. Commit your changes (`git commit -m 'Add some amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
+
+Visit our [contributing guidelines](CONTRIBUTING.md)
 
 ## 📄 License
 
