@@ -8,16 +8,16 @@ A professional, feature-rich Discord bot for managing support tickets, built wit
 
 ## 📑 Table of Contents
 
-- [Overview](#📋Overview)
-- [Features](#features)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Dependencies](#dependencies)
-- [Contributing](#contributing)
-- [License](#license)
+- [Overview](#-overview)
+- [Features](#-features)
+- [Requirements](#-requirements)
+- [Installation](#-installation)
+- [Configuration](#%EF%B8%8F-configuration)
+- [Usage](#-usage)
+- [Project Structure](#-project-structure)
+- [Dependencies](#-dependencies)
+- [Contributing](#-contributing)
+- [License](#-license)
 
 ## 📋 Overview
 
