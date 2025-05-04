@@ -18,6 +18,7 @@ A professional, feature-rich Discord bot for managing support tickets, built wit
 - [Dependencies](#-dependencies)
 - [Contributing](#-contributing)
 - [License](#-license)
+- [Support](#-support)
 
 ## 📋 Overview
 
