@@ -82,7 +82,7 @@ Edit the `config.json` file with your specific settings:
   "BOT_TOKEN": "",               // Your Discord bot token
   "BOT_STATUS": "",              // Custom status for the bot
   "TIMEZONE": "",                // Your preferred timezone (e.g., "Europe/London")
-  "REFRESH_CREATION_MESSAGE": false,  // Whether to refresh the ticket creation message on startup
+  "REFRESH_CREATION_MESSAGE": true,  // Whether to refresh the ticket creation message on startup
   "MESSAGES_LOG": true,          // Enable message logging in tickets
   "DOWNLOAD_LOG": true,          // Enable downloadable ticket transcripts
   "DATABASE_NAME": "",           // Name of the database file
