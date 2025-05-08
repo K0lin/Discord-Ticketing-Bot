@@ -172,3 +172,9 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Pycharm files
+.idea
+
+# User-side configuration
+config.json

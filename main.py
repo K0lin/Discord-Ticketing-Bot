@@ -16,7 +16,7 @@ from view.ticketMessageLog import *
 #Class configuration
 configManager = ConfigManager("config")
 timezone = pytz.timezone(configManager.getTimezone())
-database = Database(configManager.getDatabaseName(), timezone)
+database = Database(configManager.getDatabaseLocation(), configManager.getDatabaseName(), timezone)
 embed = EmbeddedList(configManager=configManager)
 #Bot configuration
 bot = commands.Bot(command_prefix="", intents=discord.Intents.all())
@@ -51,7 +51,7 @@ async def on_message(message):
     if configManager.getMessagesLog():
         if str(message.channel.category.id) == str(configManager.getTicketCategoryId()):
             ticketId = int(message.channel.name.split("-")[3]) 
-            database.insertTicketMessage(ticketId,message.author.id,message.content)
+            database.insertTicketMessage(ticketId, message.author.id, message.content)
 
 #Bot start
 bot.run(configManager.getBotToken())
