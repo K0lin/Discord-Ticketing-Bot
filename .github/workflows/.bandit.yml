@@ -1,0 +1,15 @@
+skips: []
+
+targets:
+  - ./
+
+exclude_dirs:
+  - .git
+  - .github
+  - venv
+  - tests
+  - docs
+
+severity: medium
+
+confidence: medium
