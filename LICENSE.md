@@ -1,6 +1,6 @@
 # Custom Restricted License
 
-Copyright (c) 225 K0lin
+Copyright (c) 2025 K0lin
 
 ## Permissions
 - ✅ Use the software privately
