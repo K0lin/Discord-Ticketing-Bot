@@ -36,6 +36,12 @@ async def on_ready():
                 name=configManager.getBotStatus()
             )
         )
+
+    #logging
+    if configManager.getConsoleLogEnabled():
+        print(
+            f"[Bot Ready] Bot has connected to Discord and is now online with status '{configManager.getBotStatus()}'")
+
     if configManager.getRefreshTicketCreationMessage():
         channel = bot.get_channel(configManager.getTicketCreationChannelId())
         await channel.purge(limit=1)
@@ -52,6 +58,12 @@ async def on_message(message):
         if str(message.channel.category.id) == str(configManager.getTicketCategoryId()):
             ticketId = int(message.channel.name.split("-")[3]) 
             database.insertTicketMessage(ticketId,message.author.id,message.content)
+
+    # Log first 50 chars for brevity
+    if configManager.getConsoleLogEnabled():
+        print(
+            f"[Ticket Message Saved] Message saved to ticket #{ticketId} by {message.author.name} ({message.author.id}): {message.content[:50]}...")
+
 
 #Bot start
 bot.run(configManager.getBotToken())

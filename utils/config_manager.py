@@ -13,6 +13,9 @@ class ConfigManager:
     
     def getBotStatus(self):
         return self.config.get("BOT_STATUS")
+
+    def getConsoleLogEnabled(self):
+        return self.config.get("ENABLE_CONSOLE_LOG")
     
     def getDatabaseName(self):
         return self.config.get("DATABASE_NAME")

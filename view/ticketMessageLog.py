@@ -22,6 +22,11 @@ class TicketMessageLog(discord.ui.View):
             ticketId =  int(bindMessage.embeds[0].author.name.split("-")[3])
             logMessages = self.database.getTicketMessage(ticketId)
             file_content = ""
+            #logging
+            if self.configManager.getConsoleLogEnabled():
+                print(
+                    f"[Ticket Log Requested] Ticket #{ticketId} log requested by {interaction.user.name} ({interaction.user.id})")
+
             if(logMessages!=[]):
                 for message in logMessages:
                     user = await interaction.client.fetch_user(message[0])
