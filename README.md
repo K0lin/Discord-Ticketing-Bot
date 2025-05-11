@@ -81,6 +81,7 @@ Edit the `config.json` file with your specific settings:
 {
   "BOT_TOKEN": "",               // Your Discord bot token
   "BOT_STATUS": "",              // Custom status for the bot
+  "ENABLE_CONSOLE_LOG": true,    // Enable logging in the console for debugging and informational messages
   "TIMEZONE": "",                // Your preferred timezone (e.g., "Europe/London")
   "REFRESH_CREATION_MESSAGE": true,  // Whether to refresh the ticket creation message on startup
   "MESSAGES_LOG": true,          // Enable message logging in tickets

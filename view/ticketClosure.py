@@ -52,6 +52,12 @@ class TicketClosureFinal(ui.Modal):
         id =  int(self.ticketNumber.split("-")[3])
         self.database.updateTicketClosure(self.closedBy,self.reason.value,id)
         await self.ticketChannel.delete()
+
+        #logging
+        if self.configManager.getConsoleLogEnabled():
+            user = self.guild.get_member(int(self.closedBy))
+            print(f"[Ticket Closed] Ticket #{id} closed by {user.name} ({user.id}) — Reason: {self.reason.value}")
+
         ticketDetail = self.database.ticketInfo(id)
         embed = discord.Embed()
         embed.set_author(name=f"{self.ticketChannel}")
