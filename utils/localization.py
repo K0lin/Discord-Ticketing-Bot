@@ -1,0 +1,57 @@
+"""
+Handling the localization and multi-language support through dictionaries in json format in the ../lang directory.
+"""
+
+import json
+from typing import List, Dict
+from paths_manager import PathsManager
+import config_manager
+class Translator:
+    """
+    Handles the language of ui elements and strings. The class is a singleton to ensure there's only one instance in
+    the app life-cycle.
+    """
+
+    _instance = None # Only one Translator instance
+
+    def __new__(cls, lang_code="en"):
+        """
+        Ensures that only one instance of Translator is created (Singleton pattern).
+        Initializes the language code and loads the translations.
+
+        :param lang_code: The language code for the translation file (default is "en").
+        :return: A single instance of the Translator class.
+        """
+        if not cls._instance:
+            cls._instance = super(Translator,cls).__new__(cls)
+            cls._instance.lang_code = lang_code
+            cls._instance.translations = cls._instance.load_translations()
+        return cls._instance
+
+    def load_translations(self) -> Dict[str]:
+        """
+        Loads all translation key-value pairs from the JSON dictionary for the specified language.
+
+        :return: A dictionary containing translation keys and their corresponding translated values.
+        :raises FileNotFoundError: If the translation file for the given language does not exist.
+        """
+        lang_code = self.lang_code
+        try:
+            abs_path = PathsManager.getAbsPath()
+            with open(f"{abs_path}/lang/{lang_code}.json", "r", encoding="utf-8") as f:
+                return json.load(f)
+        except FileNotFoundError:
+            if config_manager.getConsoleLogEnabled():
+                print(f"Language dictionary {lang_code}.json was not found.")
+                return {}
+
+    def translate(self,key,**kwargs) -> str:
+        """
+        Translates a given key from the JSON dictionary and replaces any placeholders with values.
+
+        :param key: The key of the translation to fetch.
+        :param kwargs: Additional placeholders in the string that need to be replaced.
+        :return: The translated string, with placeholders replaced by the provided values.
+        """
+        template = self.translations.get(key, f"[Missing:{key}")
+        return template.format(**kwargs)
