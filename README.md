@@ -133,7 +133,8 @@ ticketing/
 │   ├── __pycache__    # Python cache directory
 │   ├── config_manager.py  # Configuration loading and management
 │   ├── paths_manager.py   # Absolute paths to working directory management
-│   ├── database.py    # Database interaction and models
+│   ├── database.py        # Database interaction and models
+│   ├── connectionPool.py  # Database connection pool for use of threads
 │   └── embed.py       # Discord embed generators for tickets
 └── view/              # Discord UI components
     ├── __pycache__    # Python cache directory
@@ -155,6 +156,9 @@ ticketing/
 - [sqlite3](https://docs.python.org/3/library/sqlite3.html) - Lightweight database
 - [datetime](https://docs.python.org/3/library/datetime.html) - Date and time handling
 - [io](https://docs.python.org/3/library/io.html) - Core I/O functionality
+- [threading](https://docs.python.org/3/library/threading.html) - Thread management
+- [queue](https://docs.python.org/3/library/queue.html) - Queue management for database with threads
+
 
 To install all external dependencies:
 ```bash
