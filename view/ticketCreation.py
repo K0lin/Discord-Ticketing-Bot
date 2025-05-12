@@ -39,7 +39,7 @@ class TicketCreation(discord.ui.View):
             await channel.edit(overwrites=current_overwrites)
             await channel.send(embed=self.embed.ticketClosure(), view=TicketClosure(database=self.database, configManager=self.configManager))
             self.database.createNewTicket(id, interaction.user.id, "category")
-            await interaction.response.send_message(f"Ticket {category} opened", ephemeral=True)
+            await interaction.response.send_message(f"Ticket {category} opened into {channel.mention}.", ephemeral=True)
 
             #logging
             if self.configManager.getConsoleLogEnabled():
