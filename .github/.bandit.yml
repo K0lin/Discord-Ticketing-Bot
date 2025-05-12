@@ -1,0 +1,54 @@
+tests_to_run:
+  - B101  # assert statements
+  - B102  # exec used
+  - B103  # insecure use of pickle.load
+  - B104  # insecure use of shelve
+  - B105  # hardcoded password string
+  - B106  # hardcoded secret string
+  - B107  # hardcoded password default
+  - B108  # hardcoded secret default
+  - B110  # try, except, pass
+  - B112  # try, except, continue
+  - B113  # Potential timing attack with constant-time compare
+  - B301  # pickle.loads possible security issue
+  - B303  # Use of insecure deserialization (pickle)
+  - B305  # Use of >> operator, which can be vulnerable to command injection
+  - B306  # Using subprocess with shell=True
+  - B307  # Use of possibly insecure function - eval
+  - B310  # Audit urlopen for flaws.
+  - B311  # Potential SQL injection risk.
+  - B312  # Audit urllib open for flaws.
+  - B401  # import sqlite3
+  - B402  # import ssl
+  - B403  # Consider possible security implications associated with your choice of TLS/SSL version.
+  - B404  # Consider possible security implications associated with the module
+  - B405  # Consider possible security implications associated with the module
+  - B406  # Consider possible security implications associated with the module
+  - B407  # Consider possible security implications associated with the module
+  - B410  # Audit calls to XML RPC methods
+  - B411  # Audit calls to ElementTree.write, ElementTree.serialize and .decode
+  - B412  # Audit calls to ElementTree.SubElement
+  - B501  # Potential security issue: Hash algorithms considered insecure.
+  - B502  # Potential security issue: Hash algorithms considered insecure.
+  - B503  # Potential security issue: Hash algorithms considered insecure.
+  - B601  # Potential SQL injection risk.
+  - B602  # Potential command injection risk.
+  - B603  # Potential command injection risk.
+  - B605  # Starting a process with a shell: Possible injection risk.
+  - B606  # Starting a process with a shell: Possible injection risk.
+  - B607  # Starting a process with a shell: Possible injection risk.
+  - B608  # Starting a process with a shell: Possible injection risk.
+  - B609  # Starting a process with a shell: Possible injection risk.
+  - B701  # Jinja2 templates vulnerable to XSS
+
+exclude:
+  - tests/  
+  - venv/ 
+
+severity: MEDIUM
+
+confidence: MEDIUM
+
+format: json
+
+output: bandit-results.json
