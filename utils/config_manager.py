@@ -24,7 +24,7 @@ class ConfigManager:
         return self.config.get("DATABASE_LOCATION")
 
     def getLanguageCode(self):
-        return self.config.get("LANGUAGE_CODE","en") # fallback value is English
+        return self.config.get("LANGUAGE","en") # fallback value is English
 
     def getMessagesLog(self):
         return self.config.get("MESSAGES_LOG")
