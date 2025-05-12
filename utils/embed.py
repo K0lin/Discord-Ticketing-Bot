@@ -25,7 +25,7 @@ class EmbeddedList:
             description=f"{self.configManager.getTicketClosureDescription()}",
             colour=discord.Colour.from_str(self.configManager.getTicketClosureEmbedColor()) 
         )
-        if self.configManager.getMessagesLog:
+        if self.configManager.getMessagesLog():
             embed.set_footer(text="All messages you send here will be recorded.")
         embed.set_author(name=f"{self.configManager.getTicketClosureAuthor()}")
         return embed
