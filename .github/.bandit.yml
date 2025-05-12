@@ -43,8 +43,7 @@ tests_to_run:
 
 exclude:
   - tests/  
-  - venv/  
-  - **/migrations/**
+  - venv/ 
 
 severity: MEDIUM
 
