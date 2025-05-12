@@ -19,6 +19,9 @@ class ConfigManager:
     
     def getDatabaseName(self):
         return self.config.get("DATABASE_NAME")
+
+    def getDatabaseLocation(self):
+        return self.config.get("DATABASE_LOCATION")
     
     def getMessagesLog(self):
         return self.config.get("MESSAGES_LOG")

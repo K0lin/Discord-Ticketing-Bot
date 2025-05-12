@@ -2,13 +2,24 @@
 # This code is subject to the terms of the Custom Restricted License.
 # See LICENSE.md for details.
 #External Library
+import os
 import sqlite3
 from datetime import datetime
 import pytz
 
+from utils.paths_manager import PathsManager
+
+
 class Database:
-    def __init__(self, name, timezone: pytz.timezone):
-        self.con = sqlite3.connect(f"ticketing/{name}.db")
+    def __init__(self, directory, name, timezone: pytz.timezone):
+        absolute_path_directory = PathsManager.get_subdirectory_path(directory)
+        if not os.path.isdir(absolute_path_directory):
+            os.mkdir(absolute_path_directory)
+        self.filename = PathsManager.get_filename(directory, name, "db")
+        if not os.path.exists(self.filename):
+            with open(self.filename, "w") as f:
+                pass
+        self.con = sqlite3.connect(self.filename)
         self.con.execute("CREATE TABLE IF NOT EXISTS ticket(id INTEGER NOT NULL, createdBy TEXT NOT NULL, closedBy TEXT, creationDate TEXT NOT NULL, creationMotivation TEXT, closeMotivation TEXT, closeData TEXT, PRIMARY KEY('id' AUTOINCREMENT))")
         self.con.commit()
         self.con.execute("CREATE TABLE IF NOT EXISTS message(id INTEGER NOT NULL, ticketId TEXT NOT NULL, user TEXT NOT NULL, message TEXT NOT NULL, date TEXT, PRIMARY KEY('id' AUTOINCREMENT)) ")
