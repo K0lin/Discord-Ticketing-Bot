@@ -1,10 +1,10 @@
 {
   "ticket_closure.footer.log": "All messages you send here will be recorded.",
-  "ticket_closure.not_fount.error": "You can't close the ticket",
+  "ticket_closure.not_found.error": "You can't close the ticket",
   "ticket_closure.embed.id": ":id: Ticket ID",
   "ticket_closure.embed.opened_by": ":open_file_folder: Opened By",
-  "ticket_closure.embed.closed_by": "closed_lock_with_key: Closed By",
-  "ticket_closure.embed.timer": ":timer: {time_zone} Closing Time",
+  "ticket_closure.embed.closed_by": ":closed_lock_with_key: Closed By",
+  "ticket_closure.embed.timer": ":timer: {time_zone} Closing Time ",
   "ticket_closure.embed.ledger_reason": ":ledger: Reason",
   "ticket_creation.opened_to_channel": "Ticket {category} opened into {channel_mention}.",
   "ticket_message_log.file.found": "That's the file:",
