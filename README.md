@@ -86,6 +86,7 @@ Edit the `config.json` file with your specific settings:
   "REFRESH_CREATION_MESSAGE": true,  // Whether to refresh the ticket creation message on startup
   "MESSAGES_LOG": true,          // Enable message logging in tickets
   "DOWNLOAD_LOG": true,          // Enable downloadable ticket transcripts
+  "DATABASE_LOCATION": "",      // Name of the database directory
   "DATABASE_NAME": "",           // Name of the database file
   "TICKET_CREATION_CHANNEL_ID": 0,  // Channel ID where users can create tickets
   "TICKET_CREATION_EMBED_COLOR": "", // Color for the ticket creation embed (HEX) (e.g., 0xffffff)
@@ -131,6 +132,7 @@ ticketing/
 ├── utils/             # Utility functions
 │   ├── __pycache__    # Python cache directory
 │   ├── config_manager.py  # Configuration loading and management
+│   ├── paths_manager.py   # Absolute paths to working directory management
 │   ├── database.py    # Database interaction and models
 │   └── embed.py       # Discord embed generators for tickets
 └── view/              # Discord UI components
@@ -148,6 +150,7 @@ ticketing/
 
 ### Python Standard Library
 - [os](https://docs.python.org/3/library/os.html) - Operating system interfaces
+- [pathlib](https://docs.python.org/3/library/pathlib.html) - Object-oriented filesystem paths
 - [json](https://docs.python.org/3/library/json.html) - JSON processing for configuration
 - [sqlite3](https://docs.python.org/3/library/sqlite3.html) - Lightweight database
 - [datetime](https://docs.python.org/3/library/datetime.html) - Date and time handling
