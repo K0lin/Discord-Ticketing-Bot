@@ -12,12 +12,15 @@ from utils.embed import *
 from view.ticketCreation import *
 from view.ticketClosure import *
 from view.ticketMessageLog import *
+from utils.localization import Translator
 
 #Class configuration
 configManager = ConfigManager("config")
 timezone = pytz.timezone(configManager.getTimezone())
 database = Database(configManager.getDatabaseLocation(), configManager.getDatabaseName(), timezone)
 embed = EmbeddedList(configManager=configManager)
+language_code = configManager.getLanguageCode()
+language = Translator(language_code)
 #Bot configuration
 bot = commands.Bot(command_prefix="", intents=discord.Intents.all())
 
