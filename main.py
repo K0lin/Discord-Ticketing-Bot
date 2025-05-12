@@ -61,8 +61,8 @@ async def on_message(message):
 
     # Log first 50 chars for brevity
     if configManager.getConsoleLogEnabled():
-        print(
-            f"[Ticket Message Saved] Message saved to ticket #{ticketId} by {message.author.name} ({message.author.id}): {message.content[:50]}...")
+        ticketId = int(message.channel.name.split("-")[3]) 
+        print(f"[Ticket Message Saved] Message saved to ticket #{ticketId} by {message.author.name} ({message.author.id}): {message.content[:50]}...")
 
 
 #Bot start
