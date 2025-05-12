@@ -35,7 +35,7 @@ jobs:
         
     - name: Security check with bandit
       run: |
-        bandit -r . -c .bandit.yml -f json -o bandit-results.json || true
+        bandit -r . -c ../.bandit.yml -f json -o bandit-results.json || true
         
     - name: Check dependencies for vulnerabilities
       run: |
