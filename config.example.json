@@ -6,7 +6,7 @@
     "REFRESH_CREATION_MESSAGE": true,
     "MESSAGES_LOG": true,
     "DOWNLOAD_LOG": true,
-    "DATABASE_LOCATION": "tickets_database",
+    "DATABASE_LOCATION": "",
     "DATABASE_NAME": "ticket",
     "TICKET_CREATION_CHANNEL_ID": ,
     "TICKET_CREATION_EMBED_COLOR": "",
