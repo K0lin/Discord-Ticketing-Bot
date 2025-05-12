@@ -54,7 +54,7 @@ class Database:
         self.con.commit()
 
     def getTicketMessage(self, ticketId):
-        exe = self.con.execute(f"SELECT user, message, date FROM message WHERE ticketId = {ticketId} ORDER BY ticketId ASC")
+        exe = self.con.execute(f"SELECT user, message, date FROM message WHERE ticketId = {ticketId} ORDER BY date ASC")
         row = exe.fetchall()
         if row is None:
             return 0
