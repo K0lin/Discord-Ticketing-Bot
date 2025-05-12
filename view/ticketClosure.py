@@ -25,7 +25,8 @@ class TicketClosure(discord.ui.View):
                 await interaction.response.send_modal(TicketClosureFinal(configManager=self.configManager, database=self.database,title="Ticket closure", ticketChannel = interaction.channel, ticketNumber = interaction.channel.name, closedBy=interaction.user.id, guild=interaction.guild))
                 break       
         if not find:
-            await interaction.response.send_message("You can't close the ticket", ephemeral=True)
+            message = T().translate("ticket_closure.not_found.error")
+            await interaction.response.send_message(message, ephemeral=True)
 
        
 class TicketClosureFinal(ui.Modal):
