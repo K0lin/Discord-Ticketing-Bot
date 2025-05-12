@@ -4,6 +4,7 @@
 #External Library
 import os
 import sqlite3
+import threading
 import queue
 #Local File
 from utils.paths_manager import PathsManager
