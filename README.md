@@ -137,6 +137,7 @@ ticketing/
 │   ├── paths_manager.py   # Absolute paths to working directory management
 │   ├── localization.py   # Reader of translations for embedded
 │   ├── database.py    # Database interaction and models
+│   ├── connectionPool.py  # Database connection pool for use of threads
 │   └── embed.py       # Discord embed generators for tickets
 ├── view/              # Discord UI components
 │   ├── __pycache__    # Python cache directory
@@ -162,7 +163,8 @@ ticketing/
 - [io](https://docs.python.org/3/library/io.html) - Core I/O functionality
 - [sys](https://docs.python.org/3/library/sys.html) - Provides access to system-specific parameters and functions, useful indirectly for queue-related configurations
 - [typing](https://docs.python.org/3/library/typing.html) - Introduces type hints to improve clarity of code handling code
-
+- [threading](https://docs.python.org/3/library/threading.html) - Thread management
+- [queue](https://docs.python.org/3/library/queue.html) - Queue management for database with threads
 
 
 To install all external dependencies:

@@ -2,7 +2,6 @@
     "BOT_TOKEN": "",
     "BOT_STATUS": "Checking discord activity",
     "ENABLE_CONSOLE_LOG": true,
-    "LANGUAGE": "en",
     "TIMEZONE": "UTC",
     "REFRESH_CREATION_MESSAGE": true,
     "MESSAGES_LOG": true,

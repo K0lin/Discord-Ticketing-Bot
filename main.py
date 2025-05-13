@@ -5,6 +5,7 @@
 from discord.ext import commands
 import discord
 import pytz
+import threading
 #Local file
 from utils.config_manager import *
 from utils.database import *
@@ -56,17 +57,17 @@ async def on_message(message):
     if message.author == bot.user:
         return
     
-    #Ticket message saving
+   #Ticket message saving
     if configManager.getMessagesLog():
         if str(message.channel.category.id) == str(configManager.getTicketCategoryId()):
-            ticketId = int(message.channel.name.split("-")[3]) 
-            database.insertTicketMessage(ticketId,message.author.id,message.content)
+            threading.Thread(target=storeMessage, args=(message,)).start()
 
+def storeMessage(message):
+    ticketId = int(message.channel.name.split("-")[3])
+    database.insertTicketMessage(ticketId,message.author.id,message.content)
     # Log first 50 chars for brevity
     if configManager.getConsoleLogEnabled():
-        print(
-            f"[Ticket Message Saved] Message saved to ticket #{ticketId} by {message.author.name} ({message.author.id}): {message.content[:50]}...")
-
+        print(f"[Ticket Message Saved] Message saved to ticket #{ticketId} by {message.author.name} ({message.author.id}): {((message.content[:50] + '...')) if len(message.content) > 50 else (message.content[:50])}")
 
 #Bot start
 bot.run(configManager.getBotToken())
