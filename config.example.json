@@ -6,6 +6,7 @@
     "REFRESH_CREATION_MESSAGE": true,
     "MESSAGES_LOG": true,
     "DOWNLOAD_LOG": true,
+    "ADD_REMOVE_USER_TICKET": false,
     "DATABASE_LOCATION": "",
     "DATABASE_NAME": "ticket",
     "TICKET_CREATION_CHANNEL_ID": ,
