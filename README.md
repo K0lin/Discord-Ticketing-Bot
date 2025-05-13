@@ -138,11 +138,13 @@ ticketing/
 │   ├── database.py        # Database interaction and models
 │   ├── connectionPool.py  # Database connection pool for use of threads
 │   └── embed.py       # Discord embed generators for tickets
-└── view/              # Discord UI components
-    ├── __pycache__    # Python cache directory
-    ├── ticketClosure.py  # Ticket closure button and logic
-    ├── ticketCreation.py # Ticket creation interface
-    └── ticketMessageLog.py # Message logging functionality
+├── view/              # Discord UI components
+│   ├── __pycache__    # Python cache directory
+│   ├── ticketClosure.py    # Ticket closure button and logic
+│   ├── ticketCreation.py   # Ticket creation interface
+│   └── ticketMessageLog.py # Message logging functionality
+└── lang/        # Folder with configuration files for languages inside
+    └── en.json  # English language configuration file
 ```
 
 ## 📦 Dependencies
