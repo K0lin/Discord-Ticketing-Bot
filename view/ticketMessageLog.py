@@ -7,7 +7,6 @@ import io
 #Local file
 from utils.database import *
 from utils.config_manager import *
-from main import language
 
 
 class TicketMessageLog(discord.ui.View):
@@ -27,18 +26,15 @@ class TicketMessageLog(discord.ui.View):
             if self.configManager.getConsoleLogEnabled():
                 print(
                     f"[Ticket Log Requested] Ticket #{ticketId} log requested by {interaction.user.name} ({interaction.user.id})")
+
             if(logMessages!=[]):
                 for message in logMessages:
                     user = await interaction.client.fetch_user(message[0])
                     file_content = file_content + f"({message[2]}) {user.name}: {message[1]}\n"
                     file = io.BytesIO(file_content.encode('utf-8'))
-                    file.seek(0)
-
-                message = language.translate("ticket_message_log.file.found")
-                await interaction.response.send_message(message, file=discord.File(file, f"{bindMessage.embeds[0].author.name}.txt"), ephemeral=True)
+                    file.seek(0)  
+                await interaction.response.send_message("That's the file:", file=discord.File(file, f"{bindMessage.embeds[0].author.name}.txt"), ephemeral=True)
             else:
-                message = language.translate("ticket_message_log.no_messages_logged")
-                await interaction.response.send_message(message, ephemeral=True)
+                await interaction.response.send_message("There arn't message logged", ephemeral=True)
         else:
-            message = language.translate("ticket_message_log.disabled_function")
-            await interaction.response.send_message(message, ephemeral=True)
+            await interaction.response.send_message("This function is disabled", ephemeral=True)
