@@ -5,7 +5,6 @@
 import discord
 #Local file
 from utils.config_manager import *
-from main import language
 
 class EmbeddedList:
     def __init__(self, configManager: ConfigManager):
@@ -27,7 +26,6 @@ class EmbeddedList:
             colour=discord.Colour.from_str(self.configManager.getTicketClosureEmbedColor()) 
         )
         if self.configManager.getMessagesLog():
-            message = language.translate("ticket_closure.footer.log")
-            embed.set_footer(text=message)
+            embed.set_footer(text="All messages you send here will be recorded.")
         embed.set_author(name=f"{self.configManager.getTicketClosureAuthor()}")
         return embed
