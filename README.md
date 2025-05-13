@@ -34,6 +34,7 @@ This Discord Ticket Management Bot provides a robust solution for handling suppo
 - **Integrated Database**: Persistent storage of ticket data and interactions
 - **Custom Timezone Support**: Timestamp logs according to your preferred timezone
 - **Embeds & Interactive Components**: Professional-looking interfaces with embedded messages and interactive buttons
+- **Multi-language static scripts**: All embedded can be configured in different languages
 
 ## 📋 Requirements
 
