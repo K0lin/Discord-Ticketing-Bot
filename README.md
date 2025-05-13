@@ -34,6 +34,7 @@ This Discord Ticket Management Bot provides a robust solution for handling suppo
 - **Integrated Database**: Persistent storage of ticket data and interactions
 - **Custom Timezone Support**: Timestamp logs according to your preferred timezone
 - **Embeds & Interactive Components**: Professional-looking interfaces with embedded messages and interactive buttons
+- **Multi-language static scripts**: All embedded can be configured in different languages
 
 ## 📋 Requirements
 
@@ -81,10 +82,13 @@ Edit the `config.json` file with your specific settings:
 {
   "BOT_TOKEN": "",               // Your Discord bot token
   "BOT_STATUS": "",              // Custom status for the bot
+  "ENABLE_CONSOLE_LOG": true,    // Enable logging in the console for debugging and informational messages
+  "LANGUAGE": "en",             // Defines the bot's language using a standard ISO 639-1 code (e.g., "en" for English, "fa" for Persian, "es" for Spanish).
   "TIMEZONE": "",                // Your preferred timezone (e.g., "Europe/London")
   "REFRESH_CREATION_MESSAGE": true,  // Whether to refresh the ticket creation message on startup
   "MESSAGES_LOG": true,          // Enable message logging in tickets
   "DOWNLOAD_LOG": true,          // Enable downloadable ticket transcripts
+  "DATABASE_LOCATION": "",      // Name of the database directory
   "DATABASE_NAME": "",           // Name of the database file
   "TICKET_CREATION_CHANNEL_ID": 0,  // Channel ID where users can create tickets
   "TICKET_CREATION_EMBED_COLOR": "", // Color for the ticket creation embed (HEX) (e.g., 0xffffff)
@@ -130,13 +134,17 @@ ticketing/
 ├── utils/             # Utility functions
 │   ├── __pycache__    # Python cache directory
 │   ├── config_manager.py  # Configuration loading and management
+│   ├── paths_manager.py   # Absolute paths to working directory management
+│   ├── localization.py   # Reader of translations for embedded
 │   ├── database.py    # Database interaction and models
 │   └── embed.py       # Discord embed generators for tickets
-└── view/              # Discord UI components
-    ├── __pycache__    # Python cache directory
-    ├── ticketClosure.py  # Ticket closure button and logic
-    ├── ticketCreation.py # Ticket creation interface
-    └── ticketMessageLog.py # Message logging functionality
+├── view/              # Discord UI components
+│   ├── __pycache__    # Python cache directory
+│   ├── ticketClosure.py    # Ticket closure button and logic
+│   ├── ticketCreation.py   # Ticket creation interface
+│   └── ticketMessageLog.py # Message logging functionality
+└── lang/        # Folder with configuration files for languages inside
+    └── en.json  # English language configuration file
 ```
 
 ## 📦 Dependencies
@@ -147,10 +155,15 @@ ticketing/
 
 ### Python Standard Library
 - [os](https://docs.python.org/3/library/os.html) - Operating system interfaces
+- [pathlib](https://docs.python.org/3/library/pathlib.html) - Object-oriented filesystem paths
 - [json](https://docs.python.org/3/library/json.html) - JSON processing for configuration
 - [sqlite3](https://docs.python.org/3/library/sqlite3.html) - Lightweight database
 - [datetime](https://docs.python.org/3/library/datetime.html) - Date and time handling
 - [io](https://docs.python.org/3/library/io.html) - Core I/O functionality
+- [sys](https://docs.python.org/3/library/sys.html) - Provides access to system-specific parameters and functions, useful indirectly for queue-related configurations
+- [typing](https://docs.python.org/3/library/typing.html) - Introduces type hints to improve clarity of code handling code
+
+
 
 To install all external dependencies:
 ```bash

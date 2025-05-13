@@ -12,22 +12,25 @@ from utils.embed import *
 from view.ticketCreation import *
 from view.ticketClosure import *
 from view.ticketMessageLog import *
+from utils.localization import Translator
 
 #Class configuration
 configManager = ConfigManager("config")
 timezone = pytz.timezone(configManager.getTimezone())
-database = Database(configManager.getDatabaseName(), timezone)
-embed = EmbeddedList(configManager=configManager)
+language_code = configManager.getLanguageCode()
+translator = Translator(language_code)
+database = Database(configManager.getDatabaseLocation(), configManager.getDatabaseName(), timezone)
+embed = EmbeddedList(configManager=configManager, translator=translator)
 #Bot configuration
 bot = commands.Bot(command_prefix="", intents=discord.Intents.all())
 
 @bot.event
 async def on_ready():
     #Setup view
-    bot.add_view(TicketCreation(database=database, configManager=configManager, embed=embed))
-    bot.add_view(TicketClosure(database=database, configManager=configManager))
-    bot.add_view(TicketClosureFinal())
-    bot.add_view(TicketMessageLog(database=database, configManager=configManager))
+    bot.add_view(TicketCreation(database=database, configManager=configManager, embed=embed,translator=translator))
+    bot.add_view(TicketClosure(database=database, configManager=configManager, translator=translator))
+    bot.add_view(TicketClosureFinal(translator=translator))
+    bot.add_view(TicketMessageLog(database=database, configManager=configManager, translator=translator))
     #Bot status
     await bot.change_presence(
             status=discord.Status.online,

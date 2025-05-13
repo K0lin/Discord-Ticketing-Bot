@@ -6,7 +6,7 @@ import os, json
 
 class ConfigManager:
     def __init__(self, config):
-        self.config = self._readJSON(config) 
+        self.config = self._readJSON(config)
 
     def getBotToken(self):
         return self.config.get("BOT_TOKEN")
@@ -19,7 +19,13 @@ class ConfigManager:
     
     def getDatabaseName(self):
         return self.config.get("DATABASE_NAME")
-    
+
+    def getDatabaseLocation(self):
+        return self.config.get("DATABASE_LOCATION")
+
+    def getLanguageCode(self):
+        return self.config.get("LANGUAGE","en") # fallback value is English
+
     def getMessagesLog(self):
         return self.config.get("MESSAGES_LOG")
 

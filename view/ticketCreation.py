@@ -9,13 +9,16 @@ from utils.config_manager import *
 from utils.database import *
 from utils.embed import *
 from view.ticketClosure import * 
+from utils.localization import Translator
 
 class TicketCreation(discord.ui.View):
-    def __init__(self, configManager: ConfigManager = None, database: Database = None, embed: EmbeddedList = None):
+    def __init__(self, configManager: ConfigManager = None, database: Database = None, embed: EmbeddedList = None, translator:Translator = None):
         super().__init__(timeout=None)
         self.configManager = configManager
         self.database = database
         self.embed = embed
+        self.translator = translator
+
         for buttonDetails in configManager.getTicketChoiceButton():
             for name, style in buttonDetails.items():
                 button = Button(
@@ -37,9 +40,10 @@ class TicketCreation(discord.ui.View):
             current_overwrites = channel.overwrites
             current_overwrites[interaction.user] = discord.PermissionOverwrite(read_messages=True)
             await channel.edit(overwrites=current_overwrites)
-            await channel.send(embed=self.embed.ticketClosure(), view=TicketClosure(database=self.database, configManager=self.configManager))
+            await channel.send(embed=self.embed.ticketClosure(), view=TicketClosure(database=self.database, configManager=self.configManager,translator=self.translator))
             self.database.createNewTicket(id, interaction.user.id, "category")
-            await interaction.response.send_message(f"Ticket {category} opened", ephemeral=True)
+            message = self.translator.translate("ticket_creation.opened_to_channel",category=category,channel_mention=channel.mention)
+            await interaction.response.send_message(message, ephemeral=True)
 
             #logging
             if self.configManager.getConsoleLogEnabled():
