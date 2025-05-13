@@ -1,10 +1,17 @@
+# Copyright (c) 2025 K0lin
+# This code is subject to the terms of the Custom Restricted License.
+# See LICENSE.md for details.
+
+
 """
 Handling the localization and multi-language support through dictionaries in json format in the ../lang directory.
 """
 
+#External Library
 import json
 import sys
 from typing import List, Dict
+#local file
 from paths_manager import PathsManager
 import config_manager
 from utils.config_manager import ConfigManager
