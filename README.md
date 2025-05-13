@@ -87,6 +87,7 @@ Edit the `config.json` file with your specific settings:
   "REFRESH_CREATION_MESSAGE": true,  // Whether to refresh the ticket creation message on startup
   "MESSAGES_LOG": true,          // Enable message logging in tickets
   "DOWNLOAD_LOG": true,          // Enable downloadable ticket transcripts
+  "ADD_REMOVE_USER_TICKET": true, //Activate the functionality of adding and removing users from a ticekt 
   "DATABASE_LOCATION": "",      // Name of the database directory
   "DATABASE_NAME": "",           // Name of the database file
   "TICKET_CREATION_CHANNEL_ID": 0,  // Channel ID where users can create tickets
