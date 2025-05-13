@@ -5,11 +5,12 @@
 import discord
 #Local file
 from utils.config_manager import *
-from main import language
+from utils.localization import Translator
 
 class EmbeddedList:
-    def __init__(self, configManager: ConfigManager):
+    def __init__(self, configManager: ConfigManager, translator: Translator):
         self.configManager = configManager
+        self.translator = translator
     
     def ticketCreation(self):
         embed = discord.Embed(
@@ -27,7 +28,7 @@ class EmbeddedList:
             colour=discord.Colour.from_str(self.configManager.getTicketClosureEmbedColor()) 
         )
         if self.configManager.getMessagesLog():
-            message = language.translate("ticket_closure.footer.log")
+            message = self.translator.translate("ticket_closure.footer.log")
             embed.set_footer(text=message)
         embed.set_author(name=f"{self.configManager.getTicketClosureAuthor()}")
         return embed

@@ -7,14 +7,15 @@ import io
 #Local file
 from utils.database import *
 from utils.config_manager import *
-from main import language
+from utils.localization import Translator
 
 
 class TicketMessageLog(discord.ui.View):
-    def __init__(self, database: Database = None, configManager: ConfigManager = None):
+    def __init__(self, database: Database = None, configManager: ConfigManager = None, translator: Translator = None):
         super().__init__(timeout=None)
         self.database = database
         self.configManager = configManager
+        self.translator = translator
     
     @discord.ui.button(label="See messages 🔎", style=discord.ButtonStyle.primary, custom_id="persistent:ticketLoggedMessage")
     async def ticketLoggedMessage(self, interaction: discord.Interaction, button: discord.ui.Button):
@@ -34,11 +35,11 @@ class TicketMessageLog(discord.ui.View):
                     file = io.BytesIO(file_content.encode('utf-8'))
                     file.seek(0)
 
-                message = language.translate("ticket_message_log.file.found")
+                message = self.translator.translate("ticket_message_log.file.found")
                 await interaction.response.send_message(message, file=discord.File(file, f"{bindMessage.embeds[0].author.name}.txt"), ephemeral=True)
             else:
-                message = language.translate("ticket_message_log.no_messages_logged")
+                message = self.translator.translate("ticket_message_log.no_messages_logged")
                 await interaction.response.send_message(message, ephemeral=True)
         else:
-            message = language.translate("ticket_message_log.disabled_function")
+            message = self.translator.translate("ticket_message_log.disabled_function")
             await interaction.response.send_message(message, ephemeral=True)
