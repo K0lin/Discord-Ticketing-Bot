@@ -34,6 +34,7 @@ This Discord Ticket Management Bot provides a robust solution for handling suppo
 - **Integrated Database**: Persistent storage of ticket data and interactions
 - **Custom Timezone Support**: Timestamp logs according to your preferred timezone
 - **Embeds & Interactive Components**: Professional-looking interfaces with embedded messages and interactive buttons
+- **Multi-language static scripts**: All embedded can be configured in different languages
 
 ## 📋 Requirements
 
@@ -134,13 +135,16 @@ ticketing/
 │   ├── __pycache__    # Python cache directory
 │   ├── config_manager.py  # Configuration loading and management
 │   ├── paths_manager.py   # Absolute paths to working directory management
+│   ├── localization.py   # Reader of translations for embedded
 │   ├── database.py    # Database interaction and models
 │   └── embed.py       # Discord embed generators for tickets
-└── view/              # Discord UI components
-    ├── __pycache__    # Python cache directory
-    ├── ticketClosure.py  # Ticket closure button and logic
-    ├── ticketCreation.py # Ticket creation interface
-    └── ticketMessageLog.py # Message logging functionality
+├── view/              # Discord UI components
+│   ├── __pycache__    # Python cache directory
+│   ├── ticketClosure.py    # Ticket closure button and logic
+│   ├── ticketCreation.py   # Ticket creation interface
+│   └── ticketMessageLog.py # Message logging functionality
+└── lang/        # Folder with configuration files for languages inside
+    └── en.json  # English language configuration file
 ```
 
 ## 📦 Dependencies
@@ -156,6 +160,10 @@ ticketing/
 - [sqlite3](https://docs.python.org/3/library/sqlite3.html) - Lightweight database
 - [datetime](https://docs.python.org/3/library/datetime.html) - Date and time handling
 - [io](https://docs.python.org/3/library/io.html) - Core I/O functionality
+- [sys](https://docs.python.org/3/library/sys.html) - Provides access to system-specific parameters and functions, useful indirectly for queue-related configurations
+- [typing](https://docs.python.org/3/library/typing.html) - Introduces type hints to improve clarity of code handling code
+
+
 
 To install all external dependencies:
 ```bash
