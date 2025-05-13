@@ -28,6 +28,7 @@ async def on_ready():
     bot.add_view(TicketCreation(database=database, configManager=configManager, embed=embed))
     bot.add_view(TicketClosure(database=database, configManager=configManager))
     bot.add_view(TicketClosureFinal())
+    bot.add_view(UserSelectView(users=[], interaction=None, configManager=configManager, database=database))
     bot.add_view(TicketMessageLog(database=database, configManager=configManager))
     #Bot status
     await bot.change_presence(
