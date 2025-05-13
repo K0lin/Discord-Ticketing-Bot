@@ -3,9 +3,13 @@ Handling the localization and multi-language support through dictionaries in jso
 """
 
 import json
+import sys
 from typing import List, Dict
 from paths_manager import PathsManager
 import config_manager
+from utils.config_manager import ConfigManager
+
+
 class Translator:
     """
     Handles the language of ui elements and strings. The class is a singleton to ensure there's only one instance in
@@ -36,14 +40,21 @@ class Translator:
         :raises FileNotFoundError: If the translation file for the given language does not exist.
         """
         lang_code = self.lang_code
+        log_enabled = ConfigManager.getConsoleLogEnabled()
         try:
             abs_path = PathsManager.getAbsPath()
             with open(f"{abs_path}/lang/{lang_code}.json", "r", encoding="utf-8") as f:
                 return json.load(f)
         except FileNotFoundError:
-            if config_manager.getConsoleLogEnabled():
-                print(f"Language dictionary {lang_code}.json was not found.")
-                return {}
+            if log_enabled:
+                print(f"Language dictionary {lang_code}.json was not found. Will use the default language (English).")
+                try:
+                    with open(f"{abs_path}/lang/en.json", "r", encoding="utf-8") as f:
+                        return json.load(f)
+                except FileNotFoundError:
+                    if log_enabled:
+                        print(f"Default language (lang/en.json) was not found. Terminating the program.")
+                        sys.exit(1)
 
     def translate(self,key,**kwargs) -> str:
         """
