@@ -9,6 +9,7 @@ from utils.config_manager import *
 from utils.database import *
 from utils.embed import *
 from view.ticketClosure import * 
+from main import language
 
 class TicketCreation(discord.ui.View):
     def __init__(self, configManager: ConfigManager = None, database: Database = None, embed: EmbeddedList = None):
@@ -39,7 +40,8 @@ class TicketCreation(discord.ui.View):
             await channel.edit(overwrites=current_overwrites)
             await channel.send(embed=self.embed.ticketClosure(), view=TicketClosure(database=self.database, configManager=self.configManager))
             self.database.createNewTicket(id, interaction.user.id, "category")
-            await interaction.response.send_message(f"Ticket {category} opened into {channel.mention}.", ephemeral=True)
+            message = language.translate("ticket_creation.opened_to_channel",category=category,channel_mention=channel.mention)
+            await interaction.response.send_message(message, ephemeral=True)
 
             #logging
             if self.configManager.getConsoleLogEnabled():
