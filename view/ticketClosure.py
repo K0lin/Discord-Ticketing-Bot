@@ -8,7 +8,7 @@ from discord import ui
 from utils.database import *
 from utils.config_manager import *
 from view.ticketMessageLog import *
-from utils.localization import Translator as T
+from main import language
 
 class TicketClosure(discord.ui.View):
     def __init__(self, database: Database = None, configManager: ConfigManager = None):
@@ -25,7 +25,7 @@ class TicketClosure(discord.ui.View):
                 await interaction.response.send_modal(TicketClosureFinal(configManager=self.configManager, database=self.database,title="Ticket closure", ticketChannel = interaction.channel, ticketNumber = interaction.channel.name, closedBy=interaction.user.id, guild=interaction.guild))
                 break       
         if not find:
-            message = T().translate("ticket_closure.not_found.error")
+            message = language.translate("ticket_closure.not_found.error")
             await interaction.response.send_message(message, ephemeral=True)
 
        
@@ -63,23 +63,23 @@ class TicketClosureFinal(ui.Modal):
         ticketDetail = self.database.ticketInfo(id)
         embed = discord.Embed()
         embed.set_author(name=f"{self.ticketChannel}")
-        id_message = T().translate("ticket_closure.embed.id")
+        id_message = language.translate("ticket_closure.embed.id")
         embed.add_field(name=id_message,
                         value=f"{id}",
                         inline=True)
-        opened_by_message = T().translate("ticket_closure.embed.opened_by")
+        opened_by_message = language.translate("ticket_closure.embed.opened_by")
         embed.add_field(name=opened_by_message,
                         value=f"{self.guild.get_member(int(ticketDetail[1])).mention}",
                         inline=True)
-        closed_by_message = T().translate("ticket_closure.embed.closed_by")
+        closed_by_message = language.translate("ticket_closure.embed.closed_by")
         embed.add_field(name=closed_by_message,
                         value=f"{self.guild.get_member(int(ticketDetail[2])).mention}",
                         inline=True)
-        timer_message = T().translate("ticket_closure.embed.timer",time_zone=self.configManager.getTimezone())
+        timer_message = language.translate("ticket_closure.embed.timer",time_zone=self.configManager.getTimezone())
         embed.add_field(name=timer_message,
                         value=f"{ticketDetail[6]}",
                         inline=False)
-        ledger_message = T().translate("ticket_closure.embed.ledger_reason")
+        ledger_message = language.translate("ticket_closure.embed.ledger_reason")
         embed.add_field(name=ledger_message,
                         value=f"{ticketDetail[5]}",
                         inline=False)

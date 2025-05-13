@@ -7,7 +7,7 @@ import io
 #Local file
 from utils.database import *
 from utils.config_manager import *
-from utils.localization import Translator as T
+from main import language
 
 
 class TicketMessageLog(discord.ui.View):
@@ -34,11 +34,11 @@ class TicketMessageLog(discord.ui.View):
                     file = io.BytesIO(file_content.encode('utf-8'))
                     file.seek(0)
 
-                message = T().translate("ticket_message_log.file.found")
+                message = language.translate("ticket_message_log.file.found")
                 await interaction.response.send_message(message, file=discord.File(file, f"{bindMessage.embeds[0].author.name}.txt"), ephemeral=True)
             else:
-                message = T().translate("ticket_message_log.no_messages_logged")
+                message = language.translate("ticket_message_log.no_messages_logged")
                 await interaction.response.send_message(message, ephemeral=True)
         else:
-            message = T().translate("ticket_message_log.disabled_function")
+            message = language.translate("ticket_message_log.disabled_function")
             await interaction.response.send_message(message, ephemeral=True)
