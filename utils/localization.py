@@ -12,8 +12,8 @@ import json
 import sys
 from typing import List, Dict
 #local file
+from pathlib import Path
 from paths_manager import PathsManager
-import config_manager
 from utils.config_manager import ConfigManager
 
 
@@ -39,7 +39,7 @@ class Translator:
             cls._instance.translations = cls._instance.load_translations()
         return cls._instance
 
-    def load_translations(self) -> Dict[str]:
+    def load_translations(self) -> Dict[str,str]:
         """
         Loads all translation key-value pairs from the JSON dictionary for the specified language.
 
@@ -49,7 +49,7 @@ class Translator:
         lang_code = self.lang_code
         log_enabled = ConfigManager.getConsoleLogEnabled()
         try:
-            abs_path = PathsManager.getAbsPath()
+            abs_path = PathsManager.get_root_absolute_path()
             with open(f"{abs_path}/lang/{lang_code}.json", "r", encoding="utf-8") as f:
                 return json.load(f)
         except FileNotFoundError:
@@ -71,5 +71,7 @@ class Translator:
         :param kwargs: Additional placeholders in the string that need to be replaced.
         :return: The translated string, with placeholders replaced by the provided values.
         """
-        template = self.translations.get(key, f"[Missing:{key}")
+        template = self.translations.get(key, f"[Missing:{key}]")
         return template.format(**kwargs)
+
+translator = Translator()
