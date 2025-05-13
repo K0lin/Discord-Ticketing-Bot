@@ -28,51 +28,57 @@ class TicketClosure(discord.ui.View):
 
     @discord.ui.button(label="Add/Remove user", style=discord.ButtonStyle.secondary, custom_id="persistent:addRemoveUser")
     async def addRemoveUser(self, interaction: discord.Interaction, button: discord.ui.Button):
-        try:
-            # Check if user has permission to add users
-            find = False
-            for role in self.configManager.getTicketEnableClosingRoleId():
-                if interaction.guild.get_role(role) in interaction.user.roles:
-                    find = True
-                    # Get list of eligible members (excluding bots, current user, and users already in ticket)
-                    eligible_members = [
-                        m for m in interaction.guild.members 
-                        if not m.bot and  # Exclude bots
-                        #not interaction.channel.permissions_for(m).view_channel and 
-                        m.id != interaction.user.id  # Exclude command user
-                    ]
-                    
-                    if not eligible_members:
+       if self.configManager.getAddRemoveUserTicket():
+            try:
+                # Check if user has permission to add users
+                find = False
+                for role in self.configManager.getTicketEnableClosingRoleId():
+                    if interaction.guild.get_role(role) in interaction.user.roles:
+                        find = True
+                        # Get list of eligible members (excluding bots, current user, and users already in ticket)
+                        eligible_members = [
+                            m for m in interaction.guild.members 
+                            if not m.bot and  # Exclude bots
+                            #not interaction.channel.permissions_for(m).view_channel and 
+                            m.id != interaction.user.id  # Exclude command user
+                        ]
+                        
+                        if not eligible_members:
+                            await interaction.response.send_message(
+                                "No eligible users to add to the ticket.", 
+                                ephemeral=True
+                            )
+                            return
+                        
+                        # Create and send the user select view
                         await interaction.response.send_message(
-                            "No eligible users to add to the ticket.", 
+                            "Select users to add to the ticket:", 
+                            view=UserSelectView(eligible_members, interaction, self.configManager, self.database), 
                             ephemeral=True
                         )
-                        return
-                    
-                    # Create and send the user select view
+                        break
+                        
+                if not find:
                     await interaction.response.send_message(
-                        "Select users to add to the ticket:", 
-                        view=UserSelectView(eligible_members, interaction, self.configManager, self.database), 
+                        "You don't have permission to add o remove users to tickets.", 
                         ephemeral=True
                     )
-                    break
                     
-            if not find:
+            except discord.Forbidden:
                 await interaction.response.send_message(
-                    "You don't have permission to add o remove users to tickets.", 
+                    "I don't have permission to modify ticket permissions.", 
                     ephemeral=True
                 )
-                
-        except discord.Forbidden:
-            await interaction.response.send_message(
-                "I don't have permission to modify ticket permissions.", 
-                ephemeral=True
-            )
-        except Exception as e:
-            await interaction.response.send_message(
-                f"An error occurred: {str(e)}", 
-                ephemeral=True
-            )       
+            except Exception as e:
+                await interaction.response.send_message(
+                    f"An error occurred: {str(e)}", 
+                    ephemeral=True
+                )       
+        else:
+             await interaction.response.send_message(
+                    f"This feature has been disabled.", 
+                    ephemeral=True
+                )  
 class TicketClosureFinal(ui.Modal):
     def __init__(self, configManager: ConfigManager = None, database: Database= None, title: str = None, ticketChannel= None, ticketNumber= None, closedBy= None, guild= None):
         super().__init__(timeout=None,title=title)
