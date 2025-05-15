@@ -24,7 +24,7 @@ class Translator:
 
     _instance = None # Only one Translator instance
 
-    def __new__(cls, lang_code="en", , configManager = None):
+    def __new__(cls, lang_code="en", configManager = None):
         """
         Ensures that only one instance of Translator is created (Singleton pattern).
         Initializes the translator code and loads the translations.
