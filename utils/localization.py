@@ -12,7 +12,7 @@ import json
 import sys
 from typing import List, Dict
 #local file
-from paths_manager import PathsManager
+from utils.paths_manager import PathsManager
 from utils.config_manager import ConfigManager
 
 
@@ -24,7 +24,7 @@ class Translator:
 
     _instance = None # Only one Translator instance
 
-    def __new__(cls, lang_code="en"):
+    def __new__(cls, lang_code="en", , configManager = None):
         """
         Ensures that only one instance of Translator is created (Singleton pattern).
         Initializes the translator code and loads the translations.
@@ -35,6 +35,7 @@ class Translator:
         if not cls._instance:
             cls._instance = super(Translator,cls).__new__(cls)
             cls._instance.lang_code = lang_code
+            cls._instance.configManager = configManager
             cls._instance.translations = cls._instance.load_translations()
         return cls._instance
 
@@ -46,7 +47,7 @@ class Translator:
         :raises FileNotFoundError: If the translation file for the given translator does not exist.
         """
         lang_code = self.lang_code
-        log_enabled = ConfigManager.getConsoleLogEnabled()
+        log_enabled = self.configManager.getConsoleLogEnabled()
         try:
             abs_path = PathsManager.get_root_absolute_path()
             with open(f"{abs_path}/lang/{lang_code}.json", "r", encoding="utf-8") as f:
