@@ -19,7 +19,7 @@ from utils.localization import Translator
 configManager = ConfigManager("config")
 timezone = pytz.timezone(configManager.getTimezone())
 language_code = configManager.getLanguageCode()
-translator = Translator(language_code)
+translator = Translator(language_code, configManager)
 database = Database(configManager.getDatabaseLocation(), configManager.getDatabaseName(), timezone)
 embed = EmbeddedList(configManager=configManager, translator=translator)
 #Bot configuration
