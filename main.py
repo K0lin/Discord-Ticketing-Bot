@@ -49,7 +49,7 @@ async def on_ready():
     if configManager.getRefreshTicketCreationMessage():
         channel = bot.get_channel(configManager.getTicketCreationChannelId())
         await channel.purge(limit=1)
-        await channel.send(embed=embed.ticketCreation(), view=TicketCreation(configManager=configManager, database=database, embed=embed))
+        await channel.send(embed=embed.ticketCreation(), view=TicketCreation(configManager=configManager, database=database, embed=embed, translator=translator))
 
 @bot.event
 async def on_message(message):
